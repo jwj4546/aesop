@@ -11,6 +11,7 @@ public class ProductVO {
 
 	private int pno;
 	private String category;
+	private String category_sub;
 	private String pname;
 	private String com;
 	private String img1;
@@ -20,4 +21,5 @@ public class ProductVO {
 	private int oprice;
 	private int amount;
 	private int price;
+	
 }

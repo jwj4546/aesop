@@ -41,10 +41,32 @@ public class ProductController {
 	
 	@RequestMapping("list.do")
 	public String getCategoryList(@RequestParam("category") String category, Model model) {
+		String categoryName = getCategoryName(category);
+		 model.addAttribute("categoryName", categoryName);
+		 model.addAttribute("category", category);
 		model.addAttribute("list", productService.getCategoryList(category));
 		return "product/list";
 	}
 	
+	private String getCategoryName(String category) {
+		 switch (category) {
+         case "s":
+             return "스킨";
+         case "b":
+             return "바디&핸드";
+         case "h1":
+        	 return "홈";
+         case "h2":
+        	 return "헤어";
+         case "p":
+        	 return "향수";
+         case "k":
+        	 return "키트&트래블";
+         default:
+             return "기타";
+		 }
+	}
+
 	@RequestMapping("detail.do")
 	public String getProduct(@RequestParam("pno") int pno, Model model) {
 		model.addAttribute("product", productService.getProduct(pno));
@@ -59,7 +81,7 @@ public class ProductController {
 	@PostMapping("insertPro.do")
 	public String insProductPro(@RequestParam("category") String category, @RequestParam("pname") String pname, @RequestParam("com") String com,
 		@RequestParam("price") int price, @RequestParam("img1") MultipartFile img1, @RequestParam("img2") MultipartFile img2,
-		@RequestParam("img3") MultipartFile img3, HttpServletRequest request, HttpServletResponse response, Model model) {
+		@RequestParam("img3") MultipartFile img3, @RequestParam("category_sub") String category_sub, HttpServletRequest request, HttpServletResponse response, Model model) {
 		
 		String uploadDir = request.getServletContext().getRealPath(uploadLoc);
 		File dir = new File(uploadDir);
@@ -92,6 +114,7 @@ public class ProductController {
 		product.setImg1(img1Name);
 		product.setImg2(img2Name);
 		product.setImg3(img3Name);
+		product.setCategory_sub(category_sub);
 		
 		productService.insProduct(product);
 		return "redirect:listAll.do";
@@ -118,7 +141,7 @@ public class ProductController {
 	@PostMapping("updatePro.do")
 	public String upProductPro(@RequestParam("pno") int pno, @RequestParam("category") String category, @RequestParam("pname") String pname,
 			@RequestParam("com") String com, @RequestParam("price") int price, @RequestParam("img1") MultipartFile img1,
-			@RequestParam("img2") MultipartFile img2, @RequestParam("img3") MultipartFile img3, HttpServletRequest request,
+			@RequestParam("img2") MultipartFile img2, @RequestParam("img3") MultipartFile img3, @RequestParam("category_sub") String category_sub, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		
 		ProductVO before = productService.getProduct(pno);
@@ -164,6 +187,7 @@ public class ProductController {
 		product.setImg1(img1Name);
 		product.setImg2(img2Name);
 		product.setImg3(img3Name);
+		product.setCategory_sub(category_sub);
 		
 		productService.upProduct(product);
 		return "redirect:listAll.do";
