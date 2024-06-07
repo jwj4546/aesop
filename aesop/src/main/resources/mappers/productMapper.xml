@@ -8,11 +8,11 @@
 </select>
 <!--  상품 목록  -->
 <select id="getProductList" resultType="com.aesop.domain.ProductVO"> 
-	select * from product order by pno desc 
+	select * from product where category=#{category} order by pno desc 
 </select>
 <!--  상품 목록  -->
 <select id="getCategoryList" parameterType="String" resultType="com.aesop.domain.ProductVO"> 
-	select * from product where category=#{category} order by pno desc 
+	select * from product where category=#{category} and category_sub=#{category_sub} order by pno desc 
 </select>
 <!--  상품 상세보기   -->
 <select id="getProduct" resultType="com.aesop.domain.ProductVO"> 

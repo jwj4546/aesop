@@ -97,15 +97,15 @@
 						<hr>
 						<div class="buttons">
 						  <button type="submit" class="button is-danger">상품 등록</button>
-						  <a href="${path2 }/product/listAll.do" class="button is-primary">상품 목록</a>
+						  <a href="${path2 }/product/listAll.do?category=s" class="button is-primary">상품 목록</a>
 						</div>
 					</form>
 				</div>
     		</div>
     	</section>
     	<script>
-    // 카테고리 값이 변경되었을 때 실행되는 함수
-    function updateSubCategory() {
+	    // 카테고리 값이 변경되었을 때 실행되는 함수
+	    function updateSubCategory() {
         // 선택된 카테고리 값 가져오기
         var category = document.getElementById("category").value;
         

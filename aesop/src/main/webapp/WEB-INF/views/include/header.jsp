@@ -11,12 +11,12 @@
     </div>
     <nav id="gnb">
         <ul id="mainmenu">
-            <a href="${path1 }/product/list.do?category=s"><li class="menu">스킨케어</li></a>
-            <a href="${path1 }/product/list.do?category=b"><li class="menu">바디&핸드</li></a>
-            <a href="${path1 }/product/list.do?category=h1"><li class="menu">홈</li></a>
-            <a href="${path1 }/product/list.do?category=h2"><li class="menu">헤어</li></a>
-            <a href="${path1 }/product/list.do?category=p"><li class="menu">향수</li></a>
-            <a href="${path1 }/product/list.do?category=k"><li class="menu">키트&트레블</li></a>
+            <a href="${path1 }/product/listAll.do?category=s"><li class="menu">스킨케어</li></a>
+            <a href="${path1 }/product/listAll.do?category=b"><li class="menu">바디&핸드</li></a>
+            <a href="${path1 }/product/listAll.do?category=h1"><li class="menu">홈</li></a>
+            <a href="${path1 }/product/listAll.do?category=h2"><li class="menu">헤어</li></a>
+            <a href="${path1 }/product/listAll.do?category=p"><li class="menu">향수</li></a>
+            <a href="${path1 }/product/listAll.do?category=k"><li class="menu">키트&트레블</li></a>
             <a href=""><li class="menu">읽기</li></a>
             <a href=""><li class="menu">스토어</li></a>
             <a href=""><li class="menu">게시판</li></a>

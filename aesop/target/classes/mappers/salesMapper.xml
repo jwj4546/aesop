@@ -41,7 +41,7 @@
 	
 	<!-- 구매 처리 -->
 	<insert id="insSales" parameterType="com.aesop.domain.Sales">
-		insert into sales values (default, #{product.pno}, #{amount}, #{tot}, #{member.id}, #{paymethod}, #{paynum}, #{addr},
+		insert into sales values (default, #{product.pno}, #{amount}, #{tot}, #{member.email}, #{paymethod}, #{paynum}, #{addr},
 		#{tel}, #{delcom}, #{deltel}, #{delno}, #{delstatus}, #{st}, default)
 	</insert>
 	

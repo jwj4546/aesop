@@ -1,6 +1,8 @@
 package com.aesop.per;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,17 @@ public class ProductDAO  implements ProductMapper {
 	}
 
 	@Override
-	public List<ProductVO> getProductList() {
-		return sqlSession.selectList("product.getProductList");
+	public List<ProductVO> getProductList(String category) {
+		return sqlSession.selectList("product.getProductList", category);
 	}
 
+
 	@Override
-	public List<ProductVO> getCategoryList(String category) {
-		return sqlSession.selectList("product.getCategoryList", category);
+	public List<ProductVO> getCategoryList(String category, String category_sub) {
+		 Map<String, Object> params = new HashMap<>();
+		    params.put("category", category);
+		    params.put("category_sub", category_sub);
+		return sqlSession.selectList("product.getCategoryList", params);
 	}
 
 	@Override

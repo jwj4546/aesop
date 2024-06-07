@@ -39,15 +39,21 @@
 								<tr>
 									<th><label for="category">카테고리</label></th>
 									<td>
-                                        <select name="category" id="category" required>
+                                        <select name="category" id="category" onchange="updateSubCategory()" required>
                                             <option value="">선택 안함</option>
-                                            <option value="스킨케어" ${product.category == 's' ? 'selected' : ''}>스킨케어</option>
-                                            <option value="바디&핸드" ${product.category == 'b' ? 'selected' : ''}>바디&핸드</option>
-                                            <option value="홈" ${product.category == 'h1' ? 'selected' : ''}>홈</option>
-                                            <option value="헤어" ${product.category == 'h2' ? 'selected' : ''}>헤어</option>
-                                            <option value="향수" ${product.category == 'p' ? 'selected' : ''}>향수</option>
-                                            <option value="키트&트래블" ${product.category == 'k' ? 'selected' : ''}>키트&트래블</option>
+                                            <option value="s" ${product.category == 's' ? 'selected' : ''}>스킨케어</option>
+                                            <option value="b" ${product.category == 'b' ? 'selected' : ''}>바디&핸드</option>
+                                            <option value="h1" ${product.category == 'h1' ? 'selected' : ''}>홈</option>
+                                            <option value="h2" ${product.category == 'h2' ? 'selected' : ''}>헤어</option>
+                                            <option value="p" ${product.category == 'p' ? 'selected' : ''}>향수</option>
+                                            <option value="k" ${product.category == 'k' ? 'selected' : ''}>키트&트래블</option>
                                         </select>
+									</td>
+									<th><label for="category_sub">서브 카테고리</label></th>
+									<td>
+										<select name="category_sub" id="category_sub" required>
+										    <option value="">선택 안함</option>
+										</select>
 									</td>
 								</tr>
 								<tr>
@@ -95,13 +101,68 @@
 						<hr>
 						<div class="buttons">
 						  <button type="submit" class="button is-danger">정보 수정</button>
-						  <a href="${path2 }/product/listAll.do" class="button is-primary">상품 목록</a>
+						  <a href="${path2 }/product/listAll.do?category=s" class="button is-primary">상품 목록</a>
 						  <a href="${path2 }/product/detail.do?pno=${product.pno} " class="button is-success">상품 정보 상세보기</a>
 						</div>
 					</form>
 				</div>
     		</div>
     	</section>
+    	<script>
+	    // 카테고리 값이 변경되었을 때 실행되는 함수
+	    function updateSubCategory() {
+        // 선택된 카테고리 값 가져오기
+        var category = document.getElementById("category").value;
+        
+        // 서브 카테고리를 포함하는 select 요소 가져오기
+        var subCategorySelect = document.getElementById("category_sub");
+        
+        // 서브 카테고리 옵션 초기화
+        subCategorySelect.innerHTML = "";
+        
+        // 선택된 카테고리 값에 따라 서브 카테고리 옵션 추가
+        switch (category) {
+            case "s": // 스킨케어
+                subCategorySelect.innerHTML += '<option value="1">클렌저</option>';
+                subCategorySelect.innerHTML += '<option value="2">각질 제거</option>';
+                subCategorySelect.innerHTML += '<option value="3">트리트먼트&마스크</option>';
+                subCategorySelect.innerHTML += '<option value="4">토너</option>';
+                subCategorySelect.innerHTML += '<option value="5">하이드레이터</option>';
+                break;
+            case "b": // 바디&핸드
+            	subCategorySelect.innerHTML += '<option value="1">핸드</option>';
+                subCategorySelect.innerHTML += '<option value="2">바디</option>';
+                subCategorySelect.innerHTML += '<option value="3">퍼스널 케어</option>';
+                subCategorySelect.innerHTML += '<option value="4">번들</option>';
+                subCategorySelect.innerHTML += '<option value="5">핸드 및 바디 케어 기프트</option>';
+                break;
+            case "h1": // 홈
+            	subCategorySelect.innerHTML += '<option value="1">홈</option>';
+                subCategorySelect.innerHTML += '<option value="2">문학</option>';
+                subCategorySelect.innerHTML += '<option value="3">홈 케어 기프트</option>';
+                break;
+            case "h2": //헤어
+            	subCategorySelect.innerHTML += '<option value="1">샴푸</option>';
+                subCategorySelect.innerHTML += '<option value="2">컨디셔너</option>';
+                subCategorySelect.innerHTML += '<option value="3">트리트먼트</option>';
+                subCategorySelect.innerHTML += '<option value="4">그루밍</option>';
+                break;
+            case "p": //향수
+            	subCategorySelect.innerHTML += '<option value="1">우라논</option>';
+                subCategorySelect.innerHTML += '<option value="2">글롬</option>';
+                subCategorySelect.innerHTML += '<option value="3">이더시스</option>';
+                subCategorySelect.innerHTML += '<option value="4">미라세티</option>';
+                subCategorySelect.innerHTML += '<option value="5">카르스트</option>';
+                break;
+            case "k": //키트&트래블
+            	subCategorySelect.innerHTML += '<option value="1">시즈널 기프트 키트</option>';
+                subCategorySelect.innerHTML += '<option value="2">스킨 케어 키트</option>';
+                subCategorySelect.innerHTML += '<option value="3">바디&핸드 케어 키트</option>';
+                subCategorySelect.innerHTML += '<option value="4">트래블</option>';
+        		break;
+        }
+    }
+</script>
 	</main>
 	</div>
 	<!-- footer 부분 include -->

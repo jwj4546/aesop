@@ -34,38 +34,43 @@ public class ProductController {
 	String uploadLoc = "/resources/upload/";
 	
 	@RequestMapping("listAll.do")
-	public String getProductList(Model model) {
-		model.addAttribute("list", productService.getProductList());
+	public String getProductList(@RequestParam("category") String category, Model model) {
+		model.addAttribute("category", category);
+		String categoryName = getCategoryName(category);
+		 model.addAttribute("categoryName", categoryName);
+		model.addAttribute("list", productService.getProductList(category));
 		return "product/list";
 	}
+		private String getCategoryName(String category) {
+			 switch (category) {
+	         case "s":
+	             return "스킨";
+	         case "b":
+	             return "바디&핸드";
+	         case "h1":
+	        	 return "홈";
+	         case "h2":
+	        	 return "헤어";
+	         case "p":
+	        	 return "향수";
+	         case "k":
+	        	 return "키트&트래블";
+	         default:
+	             return "기타";
+			 }
+		}
 	
 	@RequestMapping("list.do")
-	public String getCategoryList(@RequestParam("category") String category, Model model) {
+	public String getCategoryList(@RequestParam("category") String category,
+			@RequestParam("category_sub") String category_sub, Model model) {
 		String categoryName = getCategoryName(category);
 		 model.addAttribute("categoryName", categoryName);
 		 model.addAttribute("category", category);
-		model.addAttribute("list", productService.getCategoryList(category));
+		 model.addAttribute("category_sub", category_sub);
+		model.addAttribute("list", productService.getCategoryList(category, category_sub));
 		return "product/list";
 	}
 	
-	private String getCategoryName(String category) {
-		 switch (category) {
-         case "s":
-             return "스킨";
-         case "b":
-             return "바디&핸드";
-         case "h1":
-        	 return "홈";
-         case "h2":
-        	 return "헤어";
-         case "p":
-        	 return "향수";
-         case "k":
-        	 return "키트&트래블";
-         default:
-             return "기타";
-		 }
-	}
 
 	@RequestMapping("detail.do")
 	public String getProduct(@RequestParam("pno") int pno, Model model) {
@@ -117,7 +122,7 @@ public class ProductController {
 		product.setCategory_sub(category_sub);
 		
 		productService.insProduct(product);
-		return "redirect:listAll.do";
+		return "redirect:/";
 	}
 	
 	public String saveFile(MultipartFile file, String uploadDir) throws IOException {
@@ -190,7 +195,7 @@ public class ProductController {
 		product.setCategory_sub(category_sub);
 		
 		productService.upProduct(product);
-		return "redirect:listAll.do";
+		return "redirect:listAll.do?category=s";
 	}
 	
 	@RequestMapping("delProduct.do")

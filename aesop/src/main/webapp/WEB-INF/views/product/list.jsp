@@ -34,7 +34,7 @@
 	    		<div class="tabs">
 				  <ul style="padding-top:50px;">
 						<c:if test="${category eq 's' }">
-                        <li><a href="${path2 }/product/list.do?category=s" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=s" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}
@@ -58,7 +58,7 @@
                         </c:if>
                         
                        <c:if test="${category eq 'b' }">
-                        <li><a href="${path2 }/product/list.do?category=b" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=b" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}
@@ -82,7 +82,7 @@
                         </c:if>
                         
                         <c:if test="${category eq 'h1' }">
-                        <li><a href="${path2 }/product/list.do?category=h1" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=h1" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}
@@ -100,7 +100,7 @@
                         </c:if>
                         
                         <c:if test="${category eq 'h2' }">
-                        <li><a href="${path2 }/product/list.do?category=h2" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=h2" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}
@@ -124,7 +124,7 @@
                         </c:if>
                         
                         <c:if test="${category eq 'p' }">
-                        <li><a href="${path2 }/product/list.do?category=p" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=p" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}
@@ -148,7 +148,7 @@
                         </c:if>
                         
                          <c:if test="${category eq 'k' }">
-                        <li><a href="${path2 }/product/list.do?category=k" class="navbar-item" title="전체">
+                        <li><a href="${path2 }/product/listAll.do?category=k" class="navbar-item" title="전체">
                             모든
                             <c:if test="${not empty categoryName}">
 				                ${categoryName}

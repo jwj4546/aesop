@@ -48,11 +48,17 @@
 										<c:if test="${product.category.equals('b')}">
 											바디&핸드
 										</c:if>
-										<c:if test="${product.category.equals('h')}">
+										<c:if test="${product.category.equals('h1')}">
+											홈
+										</c:if>
+										<c:if test="${product.category.equals('h2')}">
 											헤어
 										</c:if>
 										<c:if test="${product.category.equals('p')}">
 											향수
+										</c:if>
+										<c:if test="${product.category.equals('k')}">
+											키트&트래블
 										</c:if>
 										</strong>
 									</p>
@@ -81,7 +87,7 @@
 					  <c:if test="${semail != null }">
 					  	  <a href="${path2 }/sales/inSales.do?pno=${product.pno }" class="button is-dark">구매</a>		
 					  </c:if>
-					  <a href="${path2 }/product/listAll.do" class="button is-primary">상품 목록</a>
+					  <a href="${path2 }/product/listAll.do?category=${product.category}" class="button is-primary">상품 목록</a>
 					</div>
 				</div>
     		</div>

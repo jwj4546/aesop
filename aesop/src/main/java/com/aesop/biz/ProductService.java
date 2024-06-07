@@ -21,13 +21,14 @@ public class ProductService implements ProductBiz {
 	}
 
 	@Override
-	public List<ProductVO> getProductList() {
-		return productDAO.getProductList();
+	public List<ProductVO> getProductList(String category) {
+		return productDAO.getProductList(category);
 	}
 
+
 	@Override
-	public List<ProductVO> getCategoryList(String category) {
-		return productDAO.getCategoryList(category);
+	public List<ProductVO> getCategoryList(String category, String category_sub) {
+		return productDAO.getCategoryList(category, category_sub);
 	}
 
 	@Override
